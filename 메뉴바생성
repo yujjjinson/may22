@@ -1,0 +1,50 @@
+package juns;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Order_Page extends JFrame{
+
+   JButton[] menu_Button;
+   String[] menu_Label = {"주문페이지", "주문 내역", "마이 페이지",
+         "사 원", "관 리 자"};
+   JPanel[] menu_Panel;
+
+   void make_Menu_Button() {
+      menu_Button = new JButton[5];
+      menu_Panel = new JPanel[2];
+      menu_Panel[0] = new JPanel(new GridLayout(1, 3));
+      menu_Panel[1] = new JPanel(new GridLayout(2, 1));
+      for(int i=0; i<menu_Button.length; i++) {
+         menu_Button[i] = new JButton(menu_Label[i]);
+         menu_Button[i].setBackground(Color.RED);
+         menu_Button[i].setForeground(Color.WHITE);
+         if(i<3) {
+            menu_Panel[0].add(menu_Button[i]);
+         }else
+            menu_Panel[1].add(menu_Button[i]);
+      }
+   }
+   
+   public Order_Page(String str) {
+      super(str);
+      
+      make_Menu_Button();
+      
+      
+      this.add("North", menu_Panel[0]);
+      this.add("East", menu_Panel[1]);
+      this.setSize(1280, 720);
+      this.setVisible(true);
+      this.setResizable(false);
+   }
+   
+   public static void main(String[] args) {
+      new Order_Page("주문페이지");
+   }
+   
+}
